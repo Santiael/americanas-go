@@ -7,7 +7,13 @@ import { Ionicons } from '@expo/vector-icons';
 
 import Navigation from './navigation';
 
-function App(props) {
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
+
+function App({ skipLoadingScreen }) {
   const [isLoadingComplete, setLoadingComplete] = React.useState(false);
 
   React.useEffect(() => {
@@ -20,6 +26,7 @@ function App(props) {
           'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
         });
       } catch (e) {
+        // eslint-disable-next-line
         console.warn(e);
       } finally {
         setLoadingComplete(true);
@@ -30,22 +37,15 @@ function App(props) {
     loadResourcesAndDataAsync();
   }, []);
 
-  if (!isLoadingComplete && !props.skipLoadingScreen) {
+  if (!isLoadingComplete && !skipLoadingScreen) {
     return null;
-  } else {
-    return (
-      <SafeAreaView  style={styles.container}>
-        {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-        <Navigation />
-      </SafeAreaView >
-    );
   }
+  return (
+    <SafeAreaView style={styles.container}>
+      {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+      <Navigation />
+    </SafeAreaView>
+  );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 registerRootComponent(App);
