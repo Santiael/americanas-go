@@ -24,6 +24,8 @@ module.exports = {
     rules: {
       "global-require": "off",
       "react/prop-types": "off",
+      "react/no-array-index-key": "off",
+      "react/jsx-props-no-spreading": "off",
       "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
     }
 }

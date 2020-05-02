@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 
 import Home from '../screens/Home';
+import DummyPage from '../screens/DummyPage';
 
 import StarIcon from '../assets/icons/star.svg';
 import ListIcon from '../assets/icons/clipboard-list.svg';
@@ -40,7 +41,7 @@ export default function BottomTabNavigator() {
         />
         <Tab.Screen
           name="Departments"
-          component={Home}
+          component={DummyPage}
           options={{
             tabBarLabel: 'departamentos',
             tabBarIcon: () => <ListIcon height={20} />,
@@ -48,7 +49,7 @@ export default function BottomTabNavigator() {
         />
         <Tab.Screen
           name="Cart"
-          component={Home}
+          component={DummyPage}
           options={{
             tabBarLabel: 'cesta',
             tabBarIcon: () => <BasketIcon height={22} />,
@@ -56,7 +57,7 @@ export default function BottomTabNavigator() {
         />
         <Tab.Screen
           name="Favorites"
-          component={Home}
+          component={DummyPage}
           options={{
             tabBarLabel: 'favoritos',
             tabBarIcon: () => <HeartIcon width={20} />,
@@ -64,7 +65,7 @@ export default function BottomTabNavigator() {
         />
         <Tab.Screen
           name="More"
-          component={Home}
+          component={DummyPage}
           options={{
             tabBarLabel: 'mais',
             tabBarIcon: () => <MoreIcon height={8} />,

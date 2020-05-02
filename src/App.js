@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform, StatusBar, StyleSheet, SafeAreaView } from 'react-native';
+import { StatusBar, StyleSheet, SafeAreaView } from 'react-native';
 import { registerRootComponent, SplashScreen } from 'expo';
 
 import * as Font from 'expo-font';
@@ -42,7 +42,7 @@ function App({ skipLoadingScreen }) {
   }
   return (
     <SafeAreaView style={styles.container}>
-      {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+      <StatusBar batStyle="light-content" backgroundColor="#C4C4C4" />
       <Navigation />
     </SafeAreaView>
   );
