@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import Home from '../screens/Home';
 import DummyPage from '../screens/DummyPage';
+import ShoppingBasket from '../screens/ShoppingBasket';
 
 import StarIcon from '../assets/icons/star.svg';
 import ListIcon from '../assets/icons/clipboard-list.svg';
@@ -47,7 +48,7 @@ export default function BottomTabNavigator() {
       />
       <Tab.Screen
         name="Cart"
-        component={DummyPage}
+        component={ShoppingBasket}
         options={{
           tabBarLabel: 'cesta',
           tabBarIcon: () => <BasketIcon height={22} />,
