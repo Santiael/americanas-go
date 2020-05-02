@@ -5,6 +5,7 @@ import { registerRootComponent, SplashScreen } from 'expo';
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
 
+import colors from './constants/colors';
 import Navigation from './navigation';
 
 const styles = StyleSheet.create({
@@ -42,7 +43,7 @@ function App({ skipLoadingScreen }) {
   }
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar batStyle="light-content" backgroundColor="#C4C4C4" />
+      <StatusBar batStyle="light-content" backgroundColor={colors.lightGray} />
       <Navigation />
     </SafeAreaView>
   );

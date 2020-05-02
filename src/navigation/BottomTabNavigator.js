@@ -1,6 +1,5 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer } from '@react-navigation/native';
 
 import Home from '../screens/Home';
 import DummyPage from '../screens/DummyPage';
@@ -29,49 +28,47 @@ const tabBarOptions = {
 
 export default function BottomTabNavigator() {
   return (
-    <NavigationContainer>
-      <Tab.Navigator tabBarOptions={tabBarOptions}>
-        <Tab.Screen
-          name="Home"
-          component={Home}
-          options={{
-            tabBarLabel: 'destaques',
-            tabBarIcon: () => <StarIcon width={20} />,
-          }}
-        />
-        <Tab.Screen
-          name="Departments"
-          component={DummyPage}
-          options={{
-            tabBarLabel: 'departamentos',
-            tabBarIcon: () => <ListIcon height={20} />,
-          }}
-        />
-        <Tab.Screen
-          name="Cart"
-          component={DummyPage}
-          options={{
-            tabBarLabel: 'cesta',
-            tabBarIcon: () => <BasketIcon height={22} />,
-          }}
-        />
-        <Tab.Screen
-          name="Favorites"
-          component={DummyPage}
-          options={{
-            tabBarLabel: 'favoritos',
-            tabBarIcon: () => <HeartIcon width={20} />,
-          }}
-        />
-        <Tab.Screen
-          name="More"
-          component={DummyPage}
-          options={{
-            tabBarLabel: 'mais',
-            tabBarIcon: () => <MoreIcon height={8} />,
-          }}
-        />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <Tab.Navigator tabBarOptions={tabBarOptions}>
+      <Tab.Screen
+        name="Home"
+        component={Home}
+        options={{
+          tabBarLabel: 'destaques',
+          tabBarIcon: () => <StarIcon width={20} />,
+        }}
+      />
+      <Tab.Screen
+        name="Departments"
+        component={DummyPage}
+        options={{
+          tabBarLabel: 'departamentos',
+          tabBarIcon: () => <ListIcon height={20} />,
+        }}
+      />
+      <Tab.Screen
+        name="Cart"
+        component={DummyPage}
+        options={{
+          tabBarLabel: 'cesta',
+          tabBarIcon: () => <BasketIcon height={22} />,
+        }}
+      />
+      <Tab.Screen
+        name="Favorites"
+        component={DummyPage}
+        options={{
+          tabBarLabel: 'favoritos',
+          tabBarIcon: () => <HeartIcon width={20} />,
+        }}
+      />
+      <Tab.Screen
+        name="More"
+        component={DummyPage}
+        options={{
+          tabBarLabel: 'mais',
+          tabBarIcon: () => <MoreIcon height={8} />,
+        }}
+      />
+    </Tab.Navigator>
   );
 }
