@@ -5,7 +5,7 @@ const product = [
     price: 2500,
     stock: 50,
     amount: 1,
-    source: require('../../assets/images/iphoneXr.jpg'),
+    image: require('../assets/images/iphoneXr.jpg'),
   },
   {
     id: '1',
@@ -13,7 +13,7 @@ const product = [
     price: 1599.99,
     amount: 1,
     stock: 25,
-    source: require('../../assets/images/geladeira.png'),
+    image: require('../assets/images/geladeira.png'),
   },
   {
     id: '2',
@@ -21,7 +21,7 @@ const product = [
     price: 2999.99,
     amount: 1,
     stock: 25,
-    source: require('../../assets/images/tv.jpg'),
+    image: require('../assets/images/tv.jpg'),
   },
   {
     id: '3',
@@ -29,7 +29,7 @@ const product = [
     price: 2500.99,
     amount: 1,
     stock: 25,
-    source: require('../../assets/images/ps4.jpg'),
+    image: require('../assets/images/ps4.jpg'),
   },
 ];
 
