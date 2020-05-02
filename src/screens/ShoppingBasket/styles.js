@@ -7,18 +7,6 @@ export default StyleSheet.create({
     flex: 1,
     paddingTop: Constants.statusBarHeight + 20,
   },
-  floatButton: {
-    height: 50,
-    width: 50,
-    backgroundColor: 'red',
-    position: 'absolute',
-    left: '80%',
-    top: '100%',
-    zIndex: 1,
-    borderRadius: 50,
-    textAlignVertical: 'center',
-    textAlign: 'center',
-  },
 
   container: {
     flex: 1,
@@ -31,12 +19,6 @@ export default StyleSheet.create({
     paddingTop: 20,
     paddingBottom: 20,
   },
-
-  img: {
-    height: 15,
-    width: 15,
-  },
-
   text: {
     marginLeft: 'auto',
     marginRight: 'auto',
@@ -54,6 +36,8 @@ export default StyleSheet.create({
     marginTop: 4,
     borderRadius: 8,
     backgroundColor: '#FFFFFF',
+    overflow: 'hidden',
+    maxHeight: 150,
   },
 
   wrapItem: {
@@ -118,6 +102,7 @@ export default StyleSheet.create({
     backgroundColor: '#E60014',
     width: '100%',
     padding: 10,
+    zIndex: 2,
   },
   wrapPrice: {
     flexDirection: 'row',
