@@ -24,6 +24,7 @@ module.exports = {
     rules: {
       "global-require": "off",
       "no-param-reassign": "off",
+      "no-nested-ternary": "off",
       "react/prop-types": "off",
       "react/no-array-index-key": "off",
       "react/jsx-props-no-spreading": "off",

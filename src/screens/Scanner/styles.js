@@ -68,6 +68,13 @@ export default StyleSheet.create({
     width: screenWidth,
     height: screenHeight,
   },
+  noPermissionText: {
+    textAlign: 'center',
+    width: '80%',
+    marginBottom: 15,
+    color: colors.white,
+    fontSize: 24,
+  },
   footer: {
     position: 'absolute',
     width: '100%',
