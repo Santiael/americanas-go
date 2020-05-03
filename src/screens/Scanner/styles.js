@@ -1,39 +1,32 @@
-import { StyleSheet } from 'react-native';
-import Constants from 'expo-constants';
+import { StyleSheet, Dimensions } from 'react-native';
 
 import colors from '../../constants/colors';
 
+const screenWidth = Math.round(Dimensions.get('window').width);
+const screenHeight = Math.round(Dimensions.get('window').height);
+
 export default StyleSheet.create({
   container: {
-    position: 'relative',
     flex: 1,
     backgroundColor: colors.black,
   },
-  scannerContainer: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  scannerOverlay: {
-    position: 'absolute',
-  },
-  scanner: {
-    ...StyleSheet.absoluteFillObject,
-  },
   header: {
-    position: 'absolute',
+    zIndex: 1,
+    alignItems: 'center',
     width: '100%',
     backgroundColor: colors.primaryColor,
-    paddingTop: 75 - Constants.statusBarHeight,
-    paddingBottom: 75,
-    alignItems: 'center',
+    paddingTop: 55,
+    paddingBottom: 55,
   },
   navBar: {
-    flexDirection: 'row',
+    position: 'relative',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     width: '100%',
-    paddingHorizontal: 15,
+  },
+  closeButton: {
+    position: 'absolute',
+    left: 15,
   },
   title: {
     color: colors.white,
@@ -62,10 +55,22 @@ export default StyleSheet.create({
   searchButton: {
     backgroundColor: colors.primaryColor,
   },
+  scannerContainer: {
+    position: 'relative',
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  scannerOverlay: {
+    position: 'absolute',
+  },
+  scanner: {
+    width: screenWidth,
+    height: screenHeight,
+  },
   footer: {
     position: 'absolute',
     width: '100%',
-    height: 140,
     backgroundColor: colors.primaryColor,
     bottom: 0,
   },
