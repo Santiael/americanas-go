@@ -33,7 +33,7 @@ export default function BottomTabNavigator() {
   return (
     <Tab.Navigator tabBarOptions={tabBarOptions}>
       <Tab.Screen
-        name="Home"
+        name="HomeRoot"
         component={HomeStack}
         options={{
           tabBarLabel: 'destaques',

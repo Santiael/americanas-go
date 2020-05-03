@@ -57,12 +57,10 @@ function StoreReducer(state, action) {
         break;
 
       case actionTypes.clearCart:
-        draft = {
-          products: [],
-          cartTotal: 0,
-          paymentTotal: 0,
-          discount: 0,
-        };
+        draft.products = [];
+        draft.cartTotal = 0;
+        draft.paymentTotal = 0;
+        draft.discount = 0;
         break;
 
       default:

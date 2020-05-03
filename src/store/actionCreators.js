@@ -47,5 +47,6 @@ export function setDiscount(discount) {
 export function clearCart() {
   return {
     type: actionTypes.clearCart,
+    payload: {},
   };
 }

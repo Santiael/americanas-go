@@ -1,49 +1,47 @@
 import { StyleSheet } from 'react-native';
-import Constants from 'expo-constants';
+
+import colors from '../../constants/colors';
 
 export default StyleSheet.create({
-  main: {
-    backgroundColor: '#FFFFFF',
-    flex: 1,
-    paddingTop: Constants.statusBarHeight + 20,
-  },
   container: {
     flex: 1,
-    paddingHorizontal: 30,
     alignItems: 'center',
-    textAlign: 'center',
-    textAlignVertical: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 50,
+    paddingHorizontal: 30,
+    backgroundColor: colors.white,
   },
-  ConfirmPayment: {
-    marginLeft: 'auto',
-    marginRight: 'auto',
+  main: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  messageContainer: {
+    justifyContent: 'center',
+  },
+  title: {
+    color: colors.primaryColor,
+    marginBottom: 15,
+    textAlign: 'center',
     fontSize: 15,
-    color: '#E60014',
     fontWeight: 'bold',
   },
   message: {
-    color: '#8A8A8A',
+    color: colors.darkGray,
     textAlign: 'center',
     marginBottom: 15,
     lineHeight: 20,
   },
-  footer: {
-    backgroundColor: '#E60014',
-    width: '80%',
-    padding: 5,
-    zIndex: 2,
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    marginBottom: 20,
+  finishButton: {
+    alignItems: 'center',
+    width: 250,
+    marginTop: 20,
+    padding: 20,
+    fontSize: 18,
+    backgroundColor: colors.primaryColor,
+    borderRadius: 3,
   },
-  continueButton: {
-    height: 50,
-    textAlign: 'center',
-    textAlignVertical: 'center',
-    borderRadius: 8,
-    backgroundColor: '#E60014',
-    color: '#FFFFFFFF',
+  finishButtonText: {
+    color: colors.white,
     fontWeight: 'bold',
-    width: '100%',
   },
 });
