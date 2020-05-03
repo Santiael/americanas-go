@@ -1,15 +1,14 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+
 import RemoveIcon from '../../assets/icons/remove-icon.svg';
 import Person from '../../assets/icons/person.svg';
 import BarCode from '../../assets/icons/webcode.svg';
 // import FlagCard from '../../assets/icons/flag-card.svg';
+
 import styles from './styles';
 
-export default function ConfirmPayment() {
-  const navigation = useNavigation();
-
+export default function ConfirmPayment({ navigation }) {
   function goInitial() {
     navigation.navigate('Home');
   }

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { View, TextInput, ScrollView } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 
 import Fab from '../../components/Fab';
 
@@ -10,9 +9,7 @@ import BarcodeIcon from '../../assets/icons/barcode.svg';
 
 import styles from './styles';
 
-export default function Home() {
-  const navigation = useNavigation();
-
+export default function Home({ navigation }) {
   function onPressScanner() {
     navigation.navigate('Scanner');
   }

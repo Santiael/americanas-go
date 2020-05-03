@@ -1,9 +1,9 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import Home from '../screens/Home';
+import HomeStack from './HomeStack';
+import DummyTab from './DummyTab';
 import Cart from '../screens/Cart';
-import DummyPage from '../screens/DummyPage';
 
 import colors from '../constants/colors';
 
@@ -34,7 +34,7 @@ export default function BottomTabNavigator() {
     <Tab.Navigator tabBarOptions={tabBarOptions}>
       <Tab.Screen
         name="Home"
-        component={Home}
+        component={HomeStack}
         options={{
           tabBarLabel: 'destaques',
           tabBarIcon: () => <StarIcon width={20} />,
@@ -42,7 +42,7 @@ export default function BottomTabNavigator() {
       />
       <Tab.Screen
         name="Departments"
-        component={DummyPage}
+        component={DummyTab}
         options={{
           tabBarLabel: 'departamentos',
           tabBarIcon: () => <ListIcon height={20} />,
@@ -58,7 +58,7 @@ export default function BottomTabNavigator() {
       />
       <Tab.Screen
         name="Favorites"
-        component={DummyPage}
+        component={DummyTab}
         options={{
           tabBarLabel: 'favoritos',
           tabBarIcon: () => <HeartIcon width={20} />,
@@ -66,7 +66,7 @@ export default function BottomTabNavigator() {
       />
       <Tab.Screen
         name="More"
-        component={DummyPage}
+        component={DummyTab}
         options={{
           tabBarLabel: 'mais',
           tabBarIcon: () => <MoreIcon height={8} />,

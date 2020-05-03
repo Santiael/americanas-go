@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, TextInput, Button, TouchableOpacity } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 
 import colors from '../../constants/colors';
@@ -12,8 +11,7 @@ import SearchIcon from '../../assets/icons/search.svg';
 
 import styles from './styles';
 
-export default function Scanner() {
-  const navigation = useNavigation();
+export default function Scanner({ navigation }) {
   const [, setHasPermission] = useState(null);
 
   useEffect(() => {

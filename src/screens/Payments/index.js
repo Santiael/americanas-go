@@ -6,13 +6,12 @@ import {
   TextInput,
   ScrollView,
 } from 'react-native';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useRoute } from '@react-navigation/native';
 import WhiteArrow from '../../assets/icons/white-arrow.svg';
 import FlagCard from '../../assets/icons/flag-card.svg';
 import styles from './styles';
 
-export default function Payments() {
-  const navigation = useNavigation();
+export default function Payments({ navigation }) {
   const route = useRoute();
   const [value, setValue] = useState();
   const { listItem } = route.params;

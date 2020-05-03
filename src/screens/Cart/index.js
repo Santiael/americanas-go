@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 
 import { store } from '../../store';
 import {
@@ -14,8 +13,7 @@ import Arrow from '../../assets/icons/left-arrow.svg';
 
 import styles from './styles';
 
-export default function Cart() {
-  const navigation = useNavigation();
+export default function Cart({ navigation }) {
   const { state, dispatch } = useContext(store);
 
   function goPayments() {
@@ -37,10 +35,8 @@ export default function Cart() {
     return () => dispatch(deleteProduct(id));
   }
 
-  React.useEffect(() => {
-    navigation.setOptions({
-      tabBarVisible: false,
-    });
+  useEffect(() => {
+    navigation.setOptions({ tabBarVisible: false });
   }, [navigation]);
 
   return (
