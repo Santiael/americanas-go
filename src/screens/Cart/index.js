@@ -3,9 +3,9 @@ import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
 
 import { store } from '../../store';
 import {
-  addProduct,
   removeProduct,
-  deleteProduct,
+  increaseAmount,
+  decreaseAmount,
 } from '../../store/actionCreators';
 import Product from '../../components/Product';
 
@@ -24,15 +24,15 @@ export default function Cart({ navigation }) {
     });
   }
   function addItem(product) {
-    return () => dispatch(addProduct(product));
+    return () => dispatch(increaseAmount(product));
   }
 
   function removeItem(id) {
-    return () => dispatch(removeProduct(id));
+    return () => dispatch(decreaseAmount(id));
   }
 
   function deleteItem(id) {
-    return () => dispatch(deleteProduct(id));
+    return () => dispatch(removeProduct(id));
   }
 
   useEffect(() => {
@@ -52,16 +52,16 @@ export default function Cart({ navigation }) {
         <Text style={styles.title}>cesta de compras</Text>
       </View>
 
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{
-          flex: 1,
-          paddingVertical: 7.5,
-          paddingHorizontal: 15,
-        }}
-      >
-        {state.products.length ? (
-          state.products.map((product) => (
+      {state.products.length ? (
+        <ScrollView
+          style={styles.productList}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{
+            paddingVertical: 7.5,
+            paddingHorizontal: 15,
+          }}
+        >
+          {state.products.map((product) => (
             <View key={product.id} style={styles.productWrapper}>
               <Product
                 data={product}
@@ -70,13 +70,13 @@ export default function Cart({ navigation }) {
                 onDelete={deleteItem(product.id)}
               />
             </View>
-          ))
-        ) : (
-          <View style={styles.emptyTextWrapper}>
-            <Text style={styles.emptyText}>{`Carrinho Vazio${'  '}:(`}</Text>
-          </View>
-        )}
-      </ScrollView>
+          ))}
+        </ScrollView>
+      ) : (
+        <View style={styles.emptyTextWrapper}>
+          <Text style={styles.emptyText}>{`Carrinho Vazio${'  '}:(`}</Text>
+        </View>
+      )}
       <View style={styles.footer}>
         <View style={styles.price}>
           <Text style={styles.priceText}>Total do pedido:</Text>

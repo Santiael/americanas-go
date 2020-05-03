@@ -1,22 +1,74 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { View, Text, TextInput, Button, TouchableOpacity } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
+import produce from 'immer';
+
+import { store } from '../../store';
+import { addProduct } from '../../store/actionCreators';
 
 import colors from '../../constants/colors';
 import Spinner from '../../components/Spinner';
+import Product from '../../components/Product';
 
-import ScanFrame from '../../assets/images/scan-frame.svg';
 import CloseIcon from '../../assets/icons/close.svg';
 import SearchIcon from '../../assets/icons/search.svg';
+import ScanFrame from '../../assets/images/scan-frame.svg';
+import ProductImage from '../../assets/images/sample-product.jpg';
 
 import styles from './styles';
 
+const { BarCodeType } = BarCodeScanner.Constants;
+
 export default function Scanner({ navigation }) {
+  const { state, dispatch } = useContext(store);
   const [hasPermission, setHasPermission] = useState(null);
+  const [product, setProduct] = useState(null);
 
   async function requestPermission() {
     const { status } = await BarCodeScanner.requestPermissionsAsync();
     setHasPermission(status === 'granted');
+  }
+
+  function handleScan({ data }) {
+    const productFound = state.products.find((p) => p.id === data);
+
+    setProduct(
+      productFound || {
+        id: data,
+        name: 'Caixa Surpresa',
+        price: 99.99,
+        amount: 1,
+        stock: 15,
+        image: ProductImage,
+      }
+    );
+  }
+
+  function increaseAmount() {
+    if (product.stock > product.amount)
+      setProduct(
+        produce(product, (draft) => {
+          draft.amount += 1;
+        })
+      );
+  }
+
+  function decreaseAmount() {
+    if (product.amount > 1)
+      setProduct(
+        produce(product, (draft) => {
+          draft.amount -= 1;
+        })
+      );
+  }
+
+  function deleteProductFromCart() {
+    setProduct(null);
+  }
+
+  function addProductToCart() {
+    dispatch(addProduct(product));
+    setProduct(null);
   }
 
   useEffect(() => {
@@ -57,7 +109,11 @@ export default function Scanner({ navigation }) {
       <View style={styles.scannerContainer}>
         {hasPermission ? (
           <>
-            <BarCodeScanner style={styles.scanner} />
+            <BarCodeScanner
+              style={styles.scanner}
+              onBarCodeScanned={product ? undefined : handleScan}
+              barCodeTypes={[BarCodeType.upc_a]}
+            />
             <ScanFrame style={styles.scannerOverlay} />
           </>
         ) : hasPermission === null ? (
@@ -76,7 +132,27 @@ export default function Scanner({ navigation }) {
         )}
       </View>
 
-      <View style={styles.footer} />
+      {product && (
+        <View style={styles.addProduct}>
+          <View style={styles.productWrapper}>
+            <Product
+              data={product}
+              onAdd={increaseAmount}
+              onRemove={decreaseAmount}
+              onDelete={deleteProductFromCart}
+              deleteIcon="close"
+            />
+          </View>
+
+          <TouchableOpacity
+            style={styles.addProductButton}
+            activeOpacity={0.8}
+            onPress={addProductToCart}
+          >
+            <Text style={styles.addProductButtonText}>adicionar</Text>
+          </TouchableOpacity>
+        </View>
+      )}
     </View>
   );
 }

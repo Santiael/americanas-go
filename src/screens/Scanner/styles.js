@@ -75,10 +75,33 @@ export default StyleSheet.create({
     color: colors.white,
     fontSize: 24,
   },
-  footer: {
+  addProduct: {
     position: 'absolute',
-    width: '100%',
-    backgroundColor: colors.primaryColor,
     bottom: 0,
+    justifyContent: 'center',
+    width: '100%',
+    padding: 15,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    backgroundColor: colors.lightestGray,
+  },
+  productWrapper: {
+    marginBottom: 20,
+    // position: 'absolute',
+    // top: 0,
+    // transform: [{ translateY: 40 }],
+  },
+  addProductButton: {
+    width: '100%',
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: colors.primaryColor,
+    borderRadius: 8,
+  },
+  addProductButtonText: {
+    color: colors.white,
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });

@@ -21,21 +21,25 @@ function StoreReducer(state, action) {
       case actionTypes.addProduct:
         productFound = draft.products.find((p) => p.id === product.id);
 
-        if (productFound) productFound.amount += 1;
+        if (productFound && productFound.stock > productFound.amount)
+          Object.assign(productFound, product);
         else draft.products.push(product);
-
         break;
 
       case actionTypes.removeProduct:
+        draft.products = draft.products.filter((p) => p.id !== id);
+        break;
+
+      case actionTypes.increaseAmount:
+        productFound = draft.products.findIndex((p) => p.id === product.id);
+
+        draft.products[productFound] = product;
+        break;
+
+      case actionTypes.decreaseAmount:
         productFound = draft.products.find((p) => p.id === id);
 
         if (productFound && productFound.amount > 1) productFound.amount -= 1;
-
-        break;
-
-      case actionTypes.deleteProduct:
-        draft.products = draft.products.filter((p) => p.id !== id);
-
         break;
 
       default:

@@ -6,7 +6,13 @@ import colors from '../../constants/colors';
 
 import styles from './styles';
 
-export default function Product({ data, onDelete, onAdd, onRemove }) {
+export default function Product({
+  data,
+  onDelete,
+  onAdd,
+  onRemove,
+  deleteIcon = 'delete',
+}) {
   const { name, image, price, amount } = data;
 
   return (
@@ -48,7 +54,7 @@ export default function Product({ data, onDelete, onAdd, onRemove }) {
       </View>
 
       <TouchableOpacity activeOpacity={0.6} onPress={onDelete}>
-        <MaterialIcons name="delete" size={25} color={colors.darkGray} />
+        <MaterialIcons name={deleteIcon} size={25} color={colors.darkGray} />
       </TouchableOpacity>
     </View>
   );

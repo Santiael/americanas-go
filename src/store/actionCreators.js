@@ -8,7 +8,6 @@ export function addProduct(product) {
     },
   };
 }
-
 export function removeProduct(id) {
   return {
     type: actionTypes.removeProduct,
@@ -18,9 +17,18 @@ export function removeProduct(id) {
   };
 }
 
-export function deleteProduct(id) {
+export function increaseAmount(id) {
   return {
-    type: actionTypes.deleteProduct,
+    type: actionTypes.increaseAmount,
+    payload: {
+      id,
+    },
+  };
+}
+
+export function decreaseAmount(id) {
+  return {
+    type: actionTypes.decreaseAmount,
     payload: {
       id,
     },

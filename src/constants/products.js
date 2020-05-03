@@ -3,8 +3,8 @@ const product = [
     id: '0',
     name: 'Iphone X',
     price: 2500,
-    stock: 50,
     amount: 1,
+    stock: 50,
     image: require('../assets/images/iphoneXr.jpg'),
   },
   {
