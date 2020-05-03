@@ -32,6 +32,9 @@ export default StyleSheet.create({
     backgroundColor: colors.primaryColor,
     elevation: 5,
   },
+  productList: {
+    flex: 1,
+  },
   productWrapper: {
     marginVertical: 7.5,
   },
@@ -63,11 +66,13 @@ export default StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
   },
-  emptyBasketText: {
-    textAlign: 'center',
-    textAlignVertical: 'center',
+  emptyTextWrapper: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  emptyText: {
     color: colors.primaryColor,
     fontSize: 25,
-    paddingTop: '50%',
   },
 });

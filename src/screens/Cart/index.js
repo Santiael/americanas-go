@@ -59,6 +59,7 @@ export default function Cart() {
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
+          flex: 1,
           paddingVertical: 7.5,
           paddingHorizontal: 15,
         }}
@@ -75,7 +76,9 @@ export default function Cart() {
             </View>
           ))
         ) : (
-          <Text style={styles.emptyBasketText}>Carrinho Vazio!</Text>
+          <View style={styles.emptyTextWrapper}>
+            <Text style={styles.emptyText}>{`Carrinho Vazio${'  '}:(`}</Text>
+          </View>
         )}
       </ScrollView>
       <View style={styles.footer}>
