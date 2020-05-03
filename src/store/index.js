@@ -31,9 +31,10 @@ function StoreReducer(state, action) {
         break;
 
       case actionTypes.increaseAmount:
-        productFound = draft.products.findIndex((p) => p.id === product.id);
+        productFound = draft.products.find((p) => p.id === id);
 
-        draft.products[productFound] = product;
+        if (productFound && productFound.amount < productFound.stock)
+          productFound.amount += 1;
         break;
 
       case actionTypes.decreaseAmount:

@@ -23,8 +23,8 @@ export default function Cart({ navigation }) {
         .toFixed(2),
     });
   }
-  function addItem(product) {
-    return () => dispatch(increaseAmount(product));
+  function addItem(id) {
+    return () => dispatch(increaseAmount(id));
   }
 
   function removeItem(id) {
@@ -65,7 +65,7 @@ export default function Cart({ navigation }) {
             <View key={product.id} style={styles.productWrapper}>
               <Product
                 data={product}
-                onAdd={addItem(product)}
+                onAdd={addItem(product.id)}
                 onRemove={removeItem(product.id)}
                 onDelete={deleteItem(product.id)}
               />
