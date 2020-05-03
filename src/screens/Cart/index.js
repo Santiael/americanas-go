@@ -39,7 +39,11 @@ export default function Cart() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <TouchableOpacity style={styles.arrowBack} onPress={navigation.goBack}>
+        <TouchableOpacity
+          style={styles.arrowBack}
+          activeOpacity={0.6}
+          onPress={navigation.goBack}
+        >
           <Arrow width={25} />
         </TouchableOpacity>
         <Text style={styles.title}>cesta de compras</Text>
@@ -78,7 +82,7 @@ export default function Cart() {
               .toFixed(2)}
           </Text>
         </View>
-        <TouchableOpacity style={styles.continueButton}>
+        <TouchableOpacity style={styles.continueButton} activeOpacity={0.8}>
           <Text style={styles.continueText}>continuar</Text>
         </TouchableOpacity>
       </View>

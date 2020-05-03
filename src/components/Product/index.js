@@ -25,7 +25,7 @@ export default function Product({ data, onDelete, onAdd, onRemove }) {
         <Text style={styles.productPrice}>{`R$${price}`}</Text>
 
         <View style={styles.amountContainer}>
-          <TouchableOpacity onPress={onRemove}>
+          <TouchableOpacity activeOpacity={0.6} onPress={onRemove}>
             <MaterialIcons
               name="remove-circle"
               size={28}
@@ -37,7 +37,7 @@ export default function Product({ data, onDelete, onAdd, onRemove }) {
             <Text style={styles.unitText}>{`${amount} un.`}</Text>
           </View>
 
-          <TouchableOpacity onPress={onAdd}>
+          <TouchableOpacity activeOpacity={0.6} onPress={onAdd}>
             <MaterialIcons
               name="add-circle"
               size={28}
@@ -47,7 +47,7 @@ export default function Product({ data, onDelete, onAdd, onRemove }) {
         </View>
       </View>
 
-      <TouchableOpacity onPress={onDelete}>
+      <TouchableOpacity activeOpacity={0.6} onPress={onDelete}>
         <MaterialIcons name="delete" size={25} color={colors.darkGray} />
       </TouchableOpacity>
     </View>
