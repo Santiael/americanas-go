@@ -14,7 +14,6 @@ export default StyleSheet.create({
     textAlign: 'center',
     textAlignVertical: 'center',
   },
-
   ConfirmPayment: {
     marginLeft: 'auto',
     marginRight: 'auto',

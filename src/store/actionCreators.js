@@ -34,3 +34,18 @@ export function decreaseAmount(id) {
     },
   };
 }
+
+export function setDiscount(discount) {
+  return {
+    type: actionTypes.setDiscount,
+    payload: {
+      discount,
+    },
+  };
+}
+
+export function clearCart() {
+  return {
+    type: actionTypes.clearCart,
+  };
+}

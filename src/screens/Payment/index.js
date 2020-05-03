@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
   View,
   Text,
@@ -6,31 +6,29 @@ import {
   TextInput,
   ScrollView,
 } from 'react-native';
-import { useRoute } from '@react-navigation/native';
+
+import { store } from '../../store';
+import { setDiscount } from '../../store/actionCreators';
+
 import WhiteArrow from '../../assets/icons/white-arrow.svg';
 import FlagCard from '../../assets/icons/flag-card.svg';
+
 import styles from './styles';
 
-export default function Payments({ navigation }) {
-  const route = useRoute();
+export default function Payment({ navigation }) {
+  const { state, dispatch } = useContext(store);
   const [value, setValue] = useState();
-  const { listItem } = route.params;
-  const [total, setTotal] = useState(listItem);
-  const [only, setOnly] = useState(false);
 
-  function donePayments() {
+  function donePayment() {
     navigation.navigate('ConfirmPayment');
   }
 
   function sale(code) {
-    if (!only) {
-      if (String(code).toUpperCase() === 'PROMO20') {
-        setOnly(true);
-        return setTotal(total - total * 0.2);
-      }
-    }
-    return total;
+    if (String(code).toUpperCase() === 'PROMO20') {
+      dispatch(setDiscount(state.cartTotal * 0.2));
+    } else dispatch(setDiscount(0));
   }
+
   return (
     <View style={styles.main}>
       <View style={styles.header}>
@@ -66,12 +64,9 @@ export default function Payments({ navigation }) {
       <View style={styles.footer}>
         <View style={styles.wrapPrice}>
           <Text style={styles.totalPrice}>Total do pedido</Text>
-          <Text style={styles.totalPrice}>
-            R$
-            {Number(total).toFixed(2)}
-          </Text>
+          <Text style={styles.totalPrice}>{`R$ ${state.paymentTotal}`}</Text>
         </View>
-        <TouchableOpacity onPress={donePayments}>
+        <TouchableOpacity onPress={donePayment}>
           <Text style={styles.continueButton}>Realizar Pagamento</Text>
         </TouchableOpacity>
       </View>

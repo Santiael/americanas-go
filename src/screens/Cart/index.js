@@ -16,12 +16,8 @@ import styles from './styles';
 export default function Cart({ navigation }) {
   const { state, dispatch } = useContext(store);
 
-  function goPayments() {
-    navigation.navigate('Payments', {
-      listItem: state.products
-        .reduce((acc, item) => acc + item.price * item.amount, 0)
-        .toFixed(2),
-    });
+  function goPayment() {
+    navigation.navigate('Payment');
   }
   function addItem(id) {
     return () => dispatch(increaseAmount(id));
@@ -81,17 +77,12 @@ export default function Cart({ navigation }) {
         <View style={styles.price}>
           <Text style={styles.priceText}>Total do pedido:</Text>
 
-          <Text style={styles.priceValue}>
-            R$
-            {state.products
-              .reduce((acc, item) => acc + item.price * item.amount, 0)
-              .toFixed(2)}
-          </Text>
+          <Text style={styles.priceValue}>{`R$ ${state.paymentTotal}`}</Text>
         </View>
         <TouchableOpacity
           style={styles.continueButton}
           activeOpacity={0.8}
-          onPress={goPayments}
+          onPress={goPayment}
         >
           <Text style={styles.continueText}>continuar</Text>
         </TouchableOpacity>
