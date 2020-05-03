@@ -17,7 +17,9 @@ import styles from './styles';
 export default function Cart() {
   const navigation = useNavigation();
   const { state, dispatch } = useContext(store);
-
+  function goPayments() {
+    navigation.navigate('Payments');
+  }
   function addItem(product) {
     return () => dispatch(addProduct(product));
   }
@@ -65,7 +67,9 @@ export default function Cart() {
               .toFixed(2)}
           </Text>
         </View>
-        <Text style={styles.continueButton}>Continuar</Text>
+        <TouchableOpacity onPress={goPayments}>
+          <Text style={styles.continueButton}>Continuar</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
