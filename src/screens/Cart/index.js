@@ -18,6 +18,13 @@ export default function Cart() {
   const navigation = useNavigation();
   const { state, dispatch } = useContext(store);
 
+  function goPayments() {
+    navigation.navigate('Payments', {
+      listItem: state.products
+        .reduce((acc, item) => acc + item.price * item.amount, 0)
+        .toFixed(2),
+    });
+  }
   function addItem(product) {
     return () => dispatch(addProduct(product));
   }
@@ -82,7 +89,11 @@ export default function Cart() {
               .toFixed(2)}
           </Text>
         </View>
-        <TouchableOpacity style={styles.continueButton} activeOpacity={0.8}>
+        <TouchableOpacity
+          style={styles.continueButton}
+          activeOpacity={0.8}
+          onPress={goPayments}
+        >
           <Text style={styles.continueText}>continuar</Text>
         </TouchableOpacity>
       </View>
