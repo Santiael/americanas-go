@@ -24,7 +24,7 @@ export default StyleSheet.create({
     position: 'absolute',
     width: '100%',
     backgroundColor: colors.primaryColor,
-    paddingTop: Constants.statusBarHeight + 15,
+    paddingTop: 75 - Constants.statusBarHeight,
     paddingBottom: 75,
     alignItems: 'center',
   },
@@ -50,7 +50,7 @@ export default StyleSheet.create({
     paddingHorizontal: 5,
     backgroundColor: colors.white,
     borderRadius: 5,
-    transform: [{ translateY: 20 }],
+    transform: [{ translateY: 22 }],
   },
   searchIcon: {
     marginLeft: 5,
