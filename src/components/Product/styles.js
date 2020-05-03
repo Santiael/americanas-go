@@ -5,13 +5,12 @@ import colors from '../../constants/colors';
 export default StyleSheet.create({
   productContainer: {
     flexDirection: 'row',
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-    elevation: 3,
-    borderRadius: 8,
+    padding: 10,
     backgroundColor: colors.white,
     borderWidth: 1,
+    borderRadius: 8,
     borderColor: colors.lightestGray,
+    elevation: 3,
   },
   productImage: {
     width: 100,

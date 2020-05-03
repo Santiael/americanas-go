@@ -53,9 +53,11 @@ export default function Product({
         </View>
       </View>
 
-      <TouchableOpacity activeOpacity={0.6} onPress={onDelete}>
-        <MaterialIcons name={deleteIcon} size={25} color={colors.darkGray} />
-      </TouchableOpacity>
+      <View>
+        <TouchableOpacity activeOpacity={0.6} onPress={onDelete}>
+          <MaterialIcons name={deleteIcon} size={25} color={colors.darkGray} />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }

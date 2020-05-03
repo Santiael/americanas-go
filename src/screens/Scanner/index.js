@@ -36,7 +36,7 @@ export default function Scanner({ navigation }) {
     setProduct(
       productFound || {
         id,
-        name: 'Caixa Surpresa',
+        name: `Produto ${id}`,
         price: 99.99,
         amount: 1,
         stock: 15,
@@ -50,7 +50,7 @@ export default function Scanner({ navigation }) {
   }
 
   function addByCode() {
-    stashProduct(code);
+    if (code) stashProduct(code);
   }
 
   function increaseAmount() {
@@ -71,7 +71,7 @@ export default function Scanner({ navigation }) {
       );
   }
 
-  function removeProductFromCart() {
+  function removeProduct() {
     setProduct(null);
   }
 
@@ -110,6 +110,7 @@ export default function Scanner({ navigation }) {
             keyboardType="number-pad"
             value={code}
             onChangeText={setCode}
+            onSubmitEditing={addByCode}
           />
 
           <Button
@@ -137,11 +138,13 @@ export default function Scanner({ navigation }) {
             <Text style={styles.noPermissionText}>
               Para utilização deste recurso, habilite o uso da câmera.
             </Text>
-            <Button
-              title="Habilitar"
-              color={colors.primaryColor}
+            <TouchableOpacity
+              style={styles.noPermissionButton}
+              activeOpacity={0.8}
               onPress={requestPermission}
-            />
+            >
+              <Text style={styles.noPermissionButtonText}>habilitar</Text>
+            </TouchableOpacity>
           </>
         )}
       </View>
@@ -153,7 +156,7 @@ export default function Scanner({ navigation }) {
               data={product}
               onAdd={increaseAmount}
               onRemove={decreaseAmount}
-              onDelete={removeProductFromCart}
+              onDelete={removeProduct}
               deleteIcon="close"
             />
           </View>
