@@ -1,56 +1,69 @@
 import { StyleSheet } from 'react-native';
-import Constants from 'expo-constants';
 
 import colors from '../../constants/colors';
 
 export default StyleSheet.create({
-  main: {
-    backgroundColor: colors.white,
-    flex: 1,
-    paddingTop: Constants.statusBarHeight + 20,
-  },
   container: {
     flex: 1,
-    paddingHorizontal: 15,
+    backgroundColor: colors.white,
   },
   header: {
+    position: 'relative',
     flexDirection: 'row',
     alignItems: 'center',
-    paddingTop: 20,
-    paddingBottom: 20,
+    paddingVertical: 20,
+    backgroundColor: colors.white,
+    elevation: 5,
   },
-  text: {
+  arrowBack: {
+    position: 'absolute',
+    left: 15,
+  },
+  title: {
     marginLeft: 'auto',
     marginRight: 'auto',
-    fontSize: 15,
+    fontSize: 18,
     color: colors.primaryColor,
     fontWeight: 'bold',
   },
   footer: {
-    backgroundColor: colors.primaryColor,
     width: '100%',
-    padding: 10,
-    zIndex: 2,
+    padding: 20,
+    backgroundColor: colors.primaryColor,
+    elevation: 5,
   },
-  wrapPrice: {
+  productWrapper: {
+    marginVertical: 7.5,
+  },
+  price: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 20,
+    marginBottom: 25,
   },
-  totalPrice: {
+  priceText: {
     color: colors.white,
+    fontWeight: 'bold',
+    fontSize: 20,
+  },
+  priceValue: {
+    color: colors.white,
+    fontWeight: 'bold',
+    fontSize: 18,
   },
   continueButton: {
-    height: 50,
-    textAlign: 'center',
-    textAlignVertical: 'center',
-    borderRadius: 8,
-    backgroundColor: colors.white,
-    color: colors.primaryColor,
-    fontWeight: 'bold',
     width: '100%',
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: colors.white,
+    borderRadius: 8,
   },
-  emptyBasket: {
+  continueText: {
+    color: colors.primaryColor,
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  emptyBasketText: {
     textAlign: 'center',
     textAlignVertical: 'center',
     color: colors.primaryColor,

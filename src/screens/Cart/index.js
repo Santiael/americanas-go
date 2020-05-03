@@ -30,42 +30,57 @@ export default function Cart() {
     return () => dispatch(deleteProduct(id));
   }
 
+  React.useEffect(() => {
+    navigation.setOptions({
+      tabBarVisible: false,
+    });
+  }, [navigation]);
+
   return (
-    <View style={styles.main}>
-      <View style={styles.container}>
-        <View style={styles.header}>
-          <TouchableOpacity onPress={navigation.goBack}>
-            <Arrow width={25} />
-          </TouchableOpacity>
-          <Text style={styles.text}> Cesta de Compras</Text>
-        </View>
-        <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
-          {state.products.length ? (
-            state.products.map((product) => (
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <TouchableOpacity style={styles.arrowBack} onPress={navigation.goBack}>
+          <Arrow width={25} />
+        </TouchableOpacity>
+        <Text style={styles.title}>cesta de compras</Text>
+      </View>
+
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{
+          paddingVertical: 7.5,
+          paddingHorizontal: 15,
+        }}
+      >
+        {state.products.length ? (
+          state.products.map((product) => (
+            <View key={product.id} style={styles.productWrapper}>
               <Product
-                key={product.id}
                 data={product}
                 onAdd={addItem(product)}
                 onRemove={removeItem(product.id)}
                 onDelete={deleteItem(product.id)}
               />
-            ))
-          ) : (
-            <Text style={styles.emptyBasket}>Carrinho Vazio!</Text>
-          )}
-        </ScrollView>
-      </View>
+            </View>
+          ))
+        ) : (
+          <Text style={styles.emptyBasketText}>Carrinho Vazio!</Text>
+        )}
+      </ScrollView>
       <View style={styles.footer}>
-        <View style={styles.wrapPrice}>
-          <Text style={styles.totalPrice}>Total do pedido</Text>
-          <Text style={styles.totalPrice}>
+        <View style={styles.price}>
+          <Text style={styles.priceText}>Total do pedido:</Text>
+
+          <Text style={styles.priceValue}>
             R$
             {state.products
               .reduce((acc, item) => acc + item.price * item.amount, 0)
               .toFixed(2)}
           </Text>
         </View>
-        <Text style={styles.continueButton}>Continuar</Text>
+        <TouchableOpacity style={styles.continueButton}>
+          <Text style={styles.continueText}>continuar</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
