@@ -17,8 +17,13 @@ import styles from './styles';
 export default function Cart() {
   const navigation = useNavigation();
   const { state, dispatch } = useContext(store);
+
   function goPayments() {
-    navigation.navigate('Payments');
+    navigation.navigate('Payments', {
+      listItem: state.products
+        .reduce((acc, item) => acc + item.price * item.amount, 0)
+        .toFixed(2),
+    });
   }
   function addItem(product) {
     return () => dispatch(addProduct(product));

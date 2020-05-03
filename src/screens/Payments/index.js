@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -6,15 +6,31 @@ import {
   TextInput,
   ScrollView,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import WhiteArrow from '../../assets/icons/white-arrow.svg';
 import FlagCard from '../../assets/icons/flag-card.svg';
 import styles from './styles';
 
 export default function Payments() {
   const navigation = useNavigation();
+  const route = useRoute();
+  const [value, setValue] = useState();
+  const { listItem } = route.params;
+  const [total, setTotal] = useState(listItem);
+  const [only, setOnly] = useState(false);
+
   function donePayments() {
-    navigation.navigate(ConfirmPayment);
+    navigation.navigate('ConfirmPayment');
+  }
+
+  function sale(code) {
+    if (!only) {
+      if (String(code).toUpperCase() === 'PROMO20') {
+        setOnly(true);
+        return setTotal(total - total * 0.2);
+      }
+    }
+    return total;
   }
   return (
     <View style={styles.main}>
@@ -38,9 +54,11 @@ export default function Payments() {
           <View style={styles.wrapGift}>
             <Text style={styles.textGift}>Possui cupom ou vale?</Text>
             <TextInput
+              onChangeText={(text) => setValue(text)}
+              value={value}
               style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
             />
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => sale(value)}>
               <Text style={styles.applyButton}>Aplicar</Text>
             </TouchableOpacity>
           </View>
@@ -49,7 +67,10 @@ export default function Payments() {
       <View style={styles.footer}>
         <View style={styles.wrapPrice}>
           <Text style={styles.totalPrice}>Total do pedido</Text>
-          <Text style={styles.totalPrice}>R$120</Text>
+          <Text style={styles.totalPrice}>
+            R$
+            {Number(total).toFixed(2)}
+          </Text>
         </View>
         <TouchableOpacity onPress={donePayments}>
           <Text style={styles.continueButton}>Realizar Pagamento</Text>
