@@ -73,20 +73,22 @@ export default function Cart({ navigation }) {
           <Text style={styles.emptyText}>{`Carrinho Vazio${'  '}:(`}</Text>
         </View>
       )}
-      <View style={styles.footer}>
-        <View style={styles.price}>
-          <Text style={styles.priceText}>Total do pedido:</Text>
+      {state.products.length ? (
+        <View style={styles.footer}>
+          <View style={styles.price}>
+            <Text style={styles.priceText}>Total do pedido:</Text>
 
-          <Text style={styles.priceValue}>{`R$ ${state.paymentTotal}`}</Text>
+            <Text style={styles.priceValue}>{`R$ ${state.paymentTotal}`}</Text>
+          </View>
+          <TouchableOpacity
+            style={styles.continueButton}
+            activeOpacity={0.8}
+            onPress={goPayment}
+          >
+            <Text style={styles.continueText}>continuar</Text>
+          </TouchableOpacity>
         </View>
-        <TouchableOpacity
-          style={styles.continueButton}
-          activeOpacity={0.8}
-          onPress={goPayment}
-        >
-          <Text style={styles.continueText}>continuar</Text>
-        </TouchableOpacity>
-      </View>
+      ) : null}
     </View>
   );
 }
