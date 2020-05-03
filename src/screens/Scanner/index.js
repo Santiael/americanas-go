@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TextInput, Button } from 'react-native';
+import { View, Text, TextInput, Button, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 
 import colors from '../../constants/colors';
@@ -12,6 +13,7 @@ import SearchIcon from '../../assets/icons/search.svg';
 import styles from './styles';
 
 export default function Scanner() {
+  const navigation = useNavigation();
   const [, setHasPermission] = useState(null);
 
   useEffect(() => {
@@ -29,9 +31,16 @@ export default function Scanner() {
       </View>
       <View style={styles.header}>
         <View style={styles.navBar}>
-          <CloseIcon width={15} height={15} />
+          <TouchableOpacity activeOpacity={0.8} onPress={navigation.goBack}>
+            <CloseIcon width={15} height={15} />
+          </TouchableOpacity>
           <Text style={styles.title}>escaneamento do código</Text>
-          <BasketIcon width={25} height={25} />
+          <TouchableOpacity
+            activeOpacity={0.8}
+            onPress={() => navigation.navigate('Cart')}
+          >
+            <BasketIcon width={25} height={25} />
+          </TouchableOpacity>
         </View>
         <View style={styles.searchBar}>
           <SearchIcon style={styles.searchIcon} width={20} height={20} />
