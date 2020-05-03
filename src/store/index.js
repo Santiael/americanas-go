@@ -53,7 +53,7 @@ function StoreReducer(state, action) {
         break;
 
       case actionTypes.setDiscount:
-        draft.discount = discount;
+        draft.discount = discount.toFixed(2);
         break;
 
       case actionTypes.clearCart:

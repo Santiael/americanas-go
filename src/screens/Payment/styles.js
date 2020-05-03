@@ -1,108 +1,115 @@
-import { StyleSheet } from 'react-native';
-import Constants from 'expo-constants';
+import { StyleSheet, Dimensions } from 'react-native';
+
+import colors from '../../constants/colors';
+
+const screenHeight = Math.round(Dimensions.get('window').height);
 
 export default StyleSheet.create({
-  main: {
-    backgroundColor: '#E60014',
-    flex: 1,
-    paddingTop: Constants.statusBarHeight + 20,
-  },
   container: {
     flex: 1,
-    paddingHorizontal: 15,
-    backgroundColor: '#FFFFFFFF',
+    minHeight: screenHeight,
+    backgroundColor: colors.white,
   },
   header: {
-    flexDirection: 'row',
+    position: 'relative',
     alignItems: 'center',
-    paddingTop: 20,
-    paddingBottom: 20,
-    backgroundColor: '#E60014',
+    justifyContent: 'center',
+    paddingVertical: 20,
+    backgroundColor: colors.primaryColor,
+    elevation: 5,
   },
-  text: {
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    fontSize: 15,
-    color: '#FFFFFFFF',
+  arrowBack: {
+    position: 'absolute',
+    left: 15,
+  },
+  pageTitle: {
+    color: colors.white,
+    fontSize: 18,
     fontWeight: 'bold',
   },
-  creditCard: {
-    height: '100%',
-    maxHeight: 200,
-    padding: 10,
-    shadowColor: 'black',
-    elevation: 5,
-    marginBottom: 8,
-    marginTop: 4,
-    borderRadius: 8,
-    backgroundColor: '#aaaaaa',
-    overflow: 'hidden',
+  main: {
+    flex: 1,
+    paddingHorizontal: 15,
   },
-  flagCard: {
-    alignSelf: 'flex-end',
-    marginBottom: 25,
+  titleContainer: {
+    alignItems: 'center',
+    marginVertical: 20,
   },
-  fieldCard: {
-    alignItems: 'flex-start',
+  title: {
+    color: colors.black,
+    fontSize: 18,
+    fontWeight: 'bold',
   },
-  titleCard: {
-    fontSize: 20,
-    color: '#FFFFFFFF',
+  paymentOptions: {
+    flex: 1,
   },
-  textCard: {
-    fontSize: 25,
-    color: '#FFFFFFFF',
-  },
-  dataCard: {
-    fontSize: 15,
-    color: '#FFFFFFFF',
-  },
-  defaultCard: {
-    alignSelf: 'flex-end',
-    color: '#FFFFFFFF',
-  },
-  wrapGift: {
-    marginTop: 15,
+  voucher: {
+    marginBottom: 30,
     justifyContent: 'space-between',
   },
-  textGift: {
-    fontSize: 17,
+  voucherInputText: {
+    fontSize: 16,
     fontWeight: 'bold',
   },
-  applyButton: {
-    borderColor: 'gray',
-    backgroundColor: '#CCCCCC',
-    color: 'white',
-    height: 50,
-    textAlign: 'center',
-    textAlignVertical: 'center',
-    borderRadius: 2,
-    marginTop: 5,
-    fontWeight: 'bold',
+  voucherInput: {
     width: '100%',
+    marginBottom: 15,
+    padding: 8,
+    borderWidth: 1,
+    borderColor: colors.lightGray,
+    borderRadius: 5,
+  },
+  voucherButton: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    height: 50,
+    color: colors.white,
+    backgroundColor: colors.primaryColor,
+    borderRadius: 3,
+  },
+  voucherButtonText: {
+    color: colors.white,
+    fontSize: 16,
+    fontWeight: 'bold',
   },
   footer: {
-    backgroundColor: '#E60014',
     width: '100%',
-    padding: 10,
+    padding: 20,
+    backgroundColor: colors.primaryColor,
+    elevation: 5,
   },
-
-  wrapPrice: {
+  productList: {
+    flex: 1,
+  },
+  productWrapper: {
+    marginVertical: 7.5,
+  },
+  price: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 20,
   },
-  totalPrice: {
-    color: '#FFFFFFFF',
+  priceText: {
+    color: colors.white,
+    fontWeight: 'bold',
+    fontSize: 20,
+  },
+  priceValue: {
+    color: colors.white,
+    fontWeight: 'bold',
+    fontSize: 18,
   },
   continueButton: {
-    height: 50,
-    textAlign: 'center',
-    textAlignVertical: 'center',
-    borderRadius: 8,
-    backgroundColor: '#FFFFFFFF',
-    color: '#E60014',
-    fontWeight: 'bold',
     width: '100%',
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: colors.white,
+    borderRadius: 8,
+  },
+  continueText: {
+    color: colors.primaryColor,
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });
