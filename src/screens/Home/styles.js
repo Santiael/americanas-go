@@ -11,7 +11,7 @@ export default StyleSheet.create({
   header: {
     paddingTop: Constants.statusBarHeight + 15,
     paddingBottom: 15,
-    backgroundColor: colors.lightGray,
+    backgroundColor: colors.primaryColor,
     fontSize: 32,
     alignItems: 'center',
   },

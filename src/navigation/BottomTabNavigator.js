@@ -5,6 +5,8 @@ import Home from '../screens/Home';
 import Cart from '../screens/Cart';
 import DummyPage from '../screens/DummyPage';
 
+import colors from '../constants/colors';
+
 import StarIcon from '../assets/icons/star.svg';
 import ListIcon from '../assets/icons/clipboard-list.svg';
 import BasketIcon from '../assets/icons/shopping-basket.svg';
@@ -16,14 +18,14 @@ const Tab = createBottomTabNavigator();
 const tabBarOptions = {
   style: {
     height: 60,
-    backgroundColor: '#8A8A8A',
+    backgroundColor: colors.primaryColor,
   },
   tabStyle: {
     justifyContent: 'center',
     paddingVertical: 8,
   },
   labelStyle: {
-    color: '#FFF',
+    color: colors.white,
   },
 };
 

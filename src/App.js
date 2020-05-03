@@ -44,7 +44,10 @@ function App({ skipLoadingScreen }) {
   }
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar batStyle="light-content" backgroundColor={colors.lightGray} />
+      <StatusBar
+        batStyle="light-content"
+        backgroundColor={colors.primaryColor}
+      />
       <StoreProvider>
         <Navigation />
       </StoreProvider>
