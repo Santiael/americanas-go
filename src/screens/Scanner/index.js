@@ -23,18 +23,19 @@ export default function Scanner({ navigation }) {
   const { state, dispatch } = useContext(store);
   const [hasPermission, setHasPermission] = useState(null);
   const [product, setProduct] = useState(null);
+  const [code, setCode] = useState('');
 
   async function requestPermission() {
     const { status } = await BarCodeScanner.requestPermissionsAsync();
     setHasPermission(status === 'granted');
   }
 
-  function handleScan({ data }) {
-    const productFound = state.products.find((p) => p.id === data);
+  function stashProduct(id) {
+    const productFound = state.products.find((p) => p.id === id);
 
     setProduct(
       productFound || {
-        id: data,
+        id,
         name: 'Caixa Surpresa',
         price: 99.99,
         amount: 1,
@@ -42,6 +43,14 @@ export default function Scanner({ navigation }) {
         image: ProductImage,
       }
     );
+  }
+
+  function handleScan({ data }) {
+    stashProduct(data);
+  }
+
+  function addByCode() {
+    stashProduct(code);
   }
 
   function increaseAmount() {
@@ -62,13 +71,14 @@ export default function Scanner({ navigation }) {
       );
   }
 
-  function deleteProductFromCart() {
+  function removeProductFromCart() {
     setProduct(null);
   }
 
   function addProductToCart() {
     dispatch(addProduct(product));
     setProduct(null);
+    setCode('');
   }
 
   useEffect(() => {
@@ -97,12 +107,16 @@ export default function Scanner({ navigation }) {
             style={styles.searchInput}
             placeholder="Inserir código de barras manualmente"
             underlineColorAndroid="transparent"
+            keyboardType="number-pad"
+            value={code}
+            onChangeText={setCode}
           />
 
           <Button
             style={styles.searchButton}
-            title="ok"
             color={colors.primaryColor}
+            title="ok"
+            onPress={addByCode}
           />
         </View>
       </View>
@@ -139,7 +153,7 @@ export default function Scanner({ navigation }) {
               data={product}
               onAdd={increaseAmount}
               onRemove={decreaseAmount}
-              onDelete={deleteProductFromCart}
+              onDelete={removeProductFromCart}
               deleteIcon="close"
             />
           </View>
