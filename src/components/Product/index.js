@@ -1,9 +1,8 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
 
-import RemoveIcon from '../../assets/icons/remove-icon.svg';
-import AddIcon from '../../assets/icons/btn-add.svg';
-import MinusIcon from '../../assets/icons/btn-remove.svg';
+import colors from '../../constants/colors';
 
 import styles from './styles';
 
@@ -11,39 +10,46 @@ export default function Product({ data, onDelete, onAdd, onRemove }) {
   const { name, image, price, amount } = data;
 
   return (
-    <View style={styles.basketItem}>
-      <View style={styles.wrapItem}>
-        <Image style={styles.imageItem} source={image} />
-      </View>
-      <View>
-        <View style={styles.wrap}>
-          <Text style={styles.titleItem} numberOfLines={1} ellipsizeMode="tail">
-            {name}
-          </Text>
-          <View style={styles.circleIcon}>
-            <TouchableOpacity onPress={onDelete}>
-              <RemoveIcon style={styles.removeIcon} width={15} height={10} />
-            </TouchableOpacity>
-          </View>
-        </View>
-        <Text style={styles.priceItem}>
-          R$
-          {price}
-          /cada
+    <View style={styles.productContainer}>
+      <Image style={styles.productImage} source={image} />
+
+      <View style={styles.productInfo}>
+        <Text
+          style={styles.productTitle}
+          numberOfLines={2}
+          ellipsizeMode="tail"
+        >
+          {name}
         </Text>
-        <View style={styles.amountItem}>
-          <TouchableOpacity onPress={onAdd}>
-            <AddIcon style={styles.removeIcon} width={15} height={12} />
-          </TouchableOpacity>
-          <Text style={styles.unitItem}>
-            {amount}
-            un.
-          </Text>
+
+        <Text style={styles.productPrice}>{`R$${price}`}</Text>
+
+        <View style={styles.amountContainer}>
           <TouchableOpacity onPress={onRemove}>
-            <MinusIcon style={styles.removeIcon} width={15} height={10} />
+            <MaterialIcons
+              name="remove-circle"
+              size={28}
+              color={colors.primaryColor}
+            />
+          </TouchableOpacity>
+
+          <View style={styles.amountUnit}>
+            <Text style={styles.unitText}>{`${amount} un.`}</Text>
+          </View>
+
+          <TouchableOpacity onPress={onAdd}>
+            <MaterialIcons
+              name="add-circle"
+              size={28}
+              color={colors.primaryColor}
+            />
           </TouchableOpacity>
         </View>
       </View>
+
+      <TouchableOpacity onPress={onDelete}>
+        <MaterialIcons name="delete" size={25} color={colors.darkGray} />
+      </TouchableOpacity>
     </View>
   );
 }

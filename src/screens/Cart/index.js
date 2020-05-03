@@ -39,7 +39,7 @@ export default function Cart() {
           </TouchableOpacity>
           <Text style={styles.text}> Cesta de Compras</Text>
         </View>
-        <ScrollView style={styles.scroll}>
+        <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
           {state.products.length ? (
             state.products.map((product) => (
               <Product
