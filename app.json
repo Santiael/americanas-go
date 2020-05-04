@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Minha Americanas",
-    "slug": "minha-americanas",
+    "name": "Americanas Go",
+    "slug": "americanas-go",
     "platforms": [
       "ios",
       "android",
@@ -9,13 +9,12 @@
     ],
     "version": "0.1.0",
     "orientation": "portrait",
-    "icon": "./src/assets/images/icon.png",
+    "icon": "./assets/icon.png",
     "scheme": "myapp",
     "entryPoint":"./src/App.js",
     "splash": {
-      "image": "./src/assets/images/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "image": "./assets/splash.png",
+      "backgroundColor": "#E30412"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -25,6 +24,10 @@
     ],
     "ios": {
       "supportsTablet": true
+    },
+    "android": {
+      "package": "com.santiael.americanasgo",
+      "versionCode": 1
     },
     "packagerOpts": {
       "config": "metro.config.js",
