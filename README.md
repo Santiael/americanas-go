@@ -14,7 +14,7 @@
 > ![gif com breve demonstração do aplicativo](https://j.gifs.com/E8VxzY.gif)
 
 ### Experimente:
-<a href="https://drive.google.com/open?id=1_oNANOPl8-gWbi_Avvco38hCAt6A7AIS">
+<a href="https://drive.google.com/file/d/19hHbfgOmwBMOBjqTWDIBO-9GrAs_Q2yj/view?usp=sharing">
   <img src="https://i.imgur.com/Lvltpg8.png"  title="Download APK" alt="download APK" />
 </a>
 
